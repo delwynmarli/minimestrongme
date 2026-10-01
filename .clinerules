@@ -1,0 +1,27 @@
+# Aturan proyek MiniMe StrongMe (WAJIB dipatuhi di setiap tugas)
+
+## Konteks
+- Game web mobile-portrait (nanti dibungkus Capacitor jadi aplikasi Android). Pemilik proyek adalah PEMULA: jelaskan perubahan dengan bahasa awam dan singkat.
+- Baca `docs/GAME_DESIGN.md` di awal setiap tugas. Itu acuan desain, daftar upgrade, musuh, dan tabel aset.
+- Kerjakan HANYA fase yang sedang diminta. Jangan menambah fitur fase berikutnya.
+
+## Teknis
+- TypeScript (strict) + HTML5 Canvas 2D + Vite. Tanpa game engine besar, tanpa backend, tanpa framework UI, tanpa API key.
+- Logika game di `src/game/` (TypeScript murni). Resolusi logika 360x640 (portrait), scale-to-fit dengan letterbox & devicePixelRatio (sudah ada di `src/main.ts`).
+- Pixel art tajam: `imageSmoothingEnabled = false`.
+- Delta-time (clamp 50 ms), target 60 FPS, object pooling untuk peluru/musuh/efek; hindari alokasi objek per frame.
+- Semua angka balance di `src/game/config.ts`. Upgrade & synergy data-driven di `src/game/upgrades/`.
+- Aset dimuat lewat `src/game/assets.ts` dari `public/assets/` (path relatif). Tambah aset baru ke `ASSET_PATHS`.
+- Teks dalam game berbahasa Inggris. Font "Press Start 2P" sudah lokal di `public/fonts/` (jangan hotlink apa pun dari internet; harus jalan offline).
+- Sound belum ada: pakai `src/game/audio.ts` (fungsi kosong `play(name)`).
+- Kode rapi, dipecah per file, komentar singkat. Jangan menulis ulang file yang tidak perlu diubah.
+
+## Aset (PENTING)
+- File PNG di `public/assets/` adalah aset asli. JANGAN menggambar ulang, mengganti, mengedit, atau membuat versi baru. Pakai apa adanya.
+- Kamu tidak bisa melihat gambar; andalkan tabel aset di `docs/GAME_DESIGN.md`. Ikon tidak semuanya persegi: gambar "fit in box" (jaga rasio).
+- Jika aset yang dibutuhkan tidak ada, gambar placeholder sederhana lewat kode dan laporkan padaku (jangan menimpa file asli).
+
+## Cara kerja
+- Setelah selesai mengubah kode: jalankan `npm run build` dan perbaiki semua error TypeScript. Lalu ringkas: file yang dibuat/diubah, dan cara mengetesnya (`npm run dev`, buka alamat yang tampil, di browser pakai mode device/phone).
+- Jika menemukan bug di luar tugas, catat dan tanyakan dulu sebelum memperbaiki.
+- Jangan menjalankan perintah yang menghapus banyak file atau menginstal paket berat tanpa menjelaskan alasannya.
