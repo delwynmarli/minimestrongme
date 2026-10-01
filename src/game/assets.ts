@@ -45,3 +45,25 @@ export function getImage(name: string): HTMLImageElement {
 export function hasImage(name: string): boolean {
   return images.has(name);
 }
+
+// Versi sprite yang seluruh pikselnya diberi satu warna (dipakai untuk flash putih).
+// Hasil di-cache agar tidak dihitung ulang setiap frame.
+const tinted = new Map<string, HTMLCanvasElement>();
+
+export function getTinted(name: string, color: string): HTMLCanvasElement {
+  const key = `${name}|${color}`;
+  const cached = tinted.get(key);
+  if (cached) return cached;
+  const img = getImage(name);
+  const c = document.createElement('canvas');
+  c.width = img.naturalWidth;
+  c.height = img.naturalHeight;
+  const g = c.getContext('2d')!;
+  g.imageSmoothingEnabled = false;
+  g.drawImage(img, 0, 0);
+  g.globalCompositeOperation = 'source-in';
+  g.fillStyle = color;
+  g.fillRect(0, 0, c.width, c.height);
+  tinted.set(key, c);
+  return c;
+}

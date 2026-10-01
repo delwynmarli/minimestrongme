@@ -25,3 +25,35 @@
 - Setelah selesai mengubah kode: jalankan `npm run build` dan perbaiki semua error TypeScript. Lalu ringkas: file yang dibuat/diubah, dan cara mengetesnya (`npm run dev`, buka alamat yang tampil, di browser pakai mode device/phone).
 - Jika menemukan bug di luar tugas, catat dan tanyakan dulu sebelum memperbaiki.
 - Jangan menjalankan perintah yang menghapus banyak file atau menginstal paket berat tanpa menjelaskan alasannya.
+
+
+## Gaya komunikasi HEMAT TOKEN (mode caveman) — WAJIB, tambahan terbaru
+
+### Cara bicara
+- Bicara sangat singkat, kalimat pendek, boleh potongan kalimat. Tanpa basa-basi, tanpa sapaan, tanpa pujian, tanpa mengulang permintaan, tanpa menjelaskan apa yang akan dilakukan.
+- Contoh gaya: "Ubah config.ts. Tambah view.ts. Build ok. Tes: npm run dev." BUKAN paragraf panjang.
+- Pikiran/reasoning juga ringkas: langsung ke inti, tidak menulis ulang kode di dalam pikiran.
+- Hanya bertanya jika benar-benar buntu; satu pertanyaan, pendek.
+- Kode, nama file, perintah, dan pesan error ditulis lengkap dan akurat (jangan disingkat).
+
+### Laporan akhir tiap tugas (maks ~8 baris)
+1. File dibuat/diubah (daftar nama saja).
+2. Hasil `npm run build` (ok / error singkat).
+3. Cara tes (1-2 baris).
+4. Angka config penting yang bisa diubah (jika relevan).
+5. Hal yang belum selesai / perlu keputusanku (jika ada).
+Jangan menulis ringkasan panjang atau mengulang isi kode.
+
+### Pengecualian: bicara jelas dan lengkap (bahasa awam)
+- Sebelum perintah berisiko (hapus banyak file, install paket besar, `git reset --hard`, ubah konfigurasi build/Android).
+- Jika ada bug/error yang butuh keputusanku, atau jika kamu tidak yakin dengan hasilnya.
+- Jika aku bertanya "kenapa" / "jelaskan": jawab normal dengan bahasa awam.
+
+### Hemat token saat bekerja
+- Cari dulu dengan `search_files`/grep, baca hanya file/bagian yang perlu. Jangan membaca ulang file yang sudah dibaca di tugas yang sama. Jangan membaca seluruh direktori berulang-ulang.
+- Ubah file dengan edit terarah (`replace_in_file`), bukan menulis ulang seluruh file. Tulis ulang penuh hanya untuk file baru atau file di bawah ~60 baris.
+- Kumpulkan beberapa edit dalam satu langkah bila bisa. Jangan mengerjakan di luar tugas.
+- Jaga file tetap kecil (idealnya di bawah ~300 baris); pecah ke modul baru jika membesar.
+- Jalankan `npm run build 2>&1 | tail -30` (jangan tampilkan log panjang). Build cukup sekali di akhir, dan ulang hanya setelah memperbaiki error.
+- Jangan membuat dokumen/README/ringkasan tambahan yang tidak diminta. Komentar kode singkat satu baris.
+- Jangan menempel isi file besar ke chat.
